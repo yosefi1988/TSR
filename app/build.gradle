@@ -1,0 +1,62 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdkVersion 31
+    buildToolsVersion "30.0.3"
+
+    lintOptions {
+        checkReleaseBuilds false
+        disable 'MissingTranslation', 'ExtraTranslation'
+    }
+    
+    defaultConfig {
+        applicationId "ir.sajjadyosefi.android.tsr"
+        minSdkVersion 30
+        targetSdkVersion 30
+        versionCode 2
+        versionName "1.1"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        TubelessSajjadSigning {
+            storeFile file("D:\\Documents\\sajjad\\Key\\xTubeless\\xTubeless98")
+            storePassword "sajjadolsvutv@42viubdvf"
+            keyAlias "keySajjad"
+            keyPassword 'Yosefi$24s;dgoj'
+        }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.TubelessSajjadSigning
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+//    implementation 'com.google.android.material:material:1.4.0'
+    implementation group: 'com.google.android.material', name: 'material', version: '1.6.1'
+
+
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'org.jetbrains:annotations:15.0'
+    implementation 'org.jetbrains:annotations:15.0'
+    implementation 'org.jetbrains:annotations:15.0'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    //implementation "androidx.annotation:annotation-experimental:1.2.0"
+}
+}
