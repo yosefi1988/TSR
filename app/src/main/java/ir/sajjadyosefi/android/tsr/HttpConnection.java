@@ -11,8 +11,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class HttpConnection {
-    String apiUrlConfirm        = "http://test.sajjadyosefi.ir/Api/User/confirmUserMobile";
-    String apiUrlReset          = "http://test.sajjadyosefi.ir/Api/User/resetPassword";
+    String apiUrlConfirm        = "https://test.sajjadyosefi.ir/Api/User/confirmUserMobile";
+    String apiUrlReset          = "https://test.sajjadyosefi.ir/Api/User/resetPassword";
 
 
     Context context;

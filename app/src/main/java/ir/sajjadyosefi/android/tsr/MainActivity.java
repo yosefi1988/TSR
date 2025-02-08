@@ -145,9 +145,44 @@ public class MainActivity extends AppCompatActivity {
 //        });
 //        thread.start();
 
+        //testService();
+    }
+
+    private void testService() {
 
 
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Looper.prepare();
+                    HttpConnection httpConnection = new HttpConnection(context);
+                    try {
+                        String txt = ("{\"d\":\"c6fc27638462d973\",\"m\":\"09123678522\",\"t\":\"c\",\"u\":\"110015\"}");
+                        String sender = ("+989999816652");
 
+                        String result = httpConnection.execute(checkNumber(txt,sender),getType(txt));
+
+                        Gson gson = new Gson();
+                        String resulttext = result.replace("\\\"","\"");
+                        ServerResponseBase exception = gson.fromJson(resulttext.substring(1, resulttext.length() - 1), ServerResponseBase.class);
+
+                        if (exception.getTubelessException().getCode() == (-55) || exception.getTubelessException().getCode() == (-54)) {
+//                            sendSms(intent,sender,exception.getTubelessException().getMessage());
+//                            Toast.makeText(context, "send:" + exception.getTubelessException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+//                                Toast.makeText(context,e.getMessage(),Toast.LENGTH_LONG).show();
+                    }
+                    Looper.loop();
+                } catch (Exception error) {
+                    error.printStackTrace();
+                }
+
+            }
+        });
+        thread.start();
     }
 
     private String checkNumber(String txt, String sender) {
